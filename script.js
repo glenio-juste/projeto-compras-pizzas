@@ -1,9 +1,9 @@
+//alert('Parou no vídeo 8')
+
 let modalQt = 1;
 
 const c = (el)=>document.querySelector(el);
 const cs = (el)=>document.querySelectorAll(el);
-
-alert('Parou no vídeo 8')
 
 // Listagem das pizzas
 pizzaJson.map((item, index)=>{
@@ -64,4 +64,27 @@ function closeModal(){
 
 cs('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item)=>{
 	item.addEventListener('click', closeModal);
+})
+
+c('.pizzaInfo--qtmenos').addEventListener('click', ()=>{
+
+	if(modalQt > 1){
+		modalQt--;
+		c('.pizzaInfo--qt').innerHTML = modalQt;
+	}
+})
+
+c('.pizzaInfo--qtmais').addEventListener('click', ()=>{
+	modalQt++;
+	c('.pizzaInfo--qt').innerHTML = modalQt;
+})
+
+cs('.pizzaInfo--size').forEach((size, sizeIndex)=>{
+
+	size.addEventListener('click', (e)=>{
+		c('.pizzaInfo--size.selected').classList.remove('selected');
+		/* e.target.classList.add('selected'); */ // o e.target não funfa aqui
+		size.classList.add('selected');
+	});
+
 })
